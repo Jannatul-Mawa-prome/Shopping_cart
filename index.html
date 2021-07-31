@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="phone" type="text" class="form-control text-center" value="1">
+                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$<span id="price">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus2" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="casing" type="text" class="form-control text-center" value="1">
+                           <button id="plus2" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="casingprice">59</span> </h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="subtotle">1278</span> </h5>
+                        <h5>$ <span id="tax">0</span> </h5>
+                        <h5>$ <span id="totle">1278</span> </h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+
+
+   <script>
+
+      function increase(isIncrease){
+         const phone = document.getElementById("phone").value;
+         const numphone= parseFloat(phone);
+         if(isIncrease == false){
+            var updatenumber= numphone - 1;
+         }
+         else{
+            var updatenumber= numphone + 1;
+         }
+         // const updatenumber= numphone - 1;
+         document.getElementById("phone").value = updatenumber;
+
+
+         const price = document.getElementById("price").innerText;
+         let numprice = parseFloat(price);
+         // const updateprice = numprice - 1219;
+         if(isIncrease == false){
+            var updateprice = numprice - 1219;
+         }
+         else{
+            var updateprice = numprice + 1219;
+         }
+
+         document.getElementById("price").innerText= updateprice;
+
+         const casingprice = document .getElementById("casingprice").innerText;
+         const numCasing = parseFloat(casingprice);
+         const subtotle = document.getElementById("subtotle").innerText;
+         const numSubtotle= parseFloat(subtotle);
+         var totlePrice = updateprice + numCasing;
+         document.getElementById("subtotle").innerText=totlePrice;
+         const totle = document.getElementById("totle").innerText;
+         let totlenum = parseFloat(totle);
+         var numtax = 0;
+         var totleamount =  totlePrice + numtax;
+         document.getElementById("tax").innerText=numtax;
+         document.getElementById("totle").innerText= totleamount;
+
+
+      }
+
+
+      function increasing(increasingValue){
+
+const casing = document.getElementById("casing").value;
+const numCasing= parseFloat(casing);
+if(increasingValue == true){
+   var updateCasingnumber = numCasing + 1;
+}
+else{
+   var updateCasingnumber = numCasing - 1;
+}
+document.getElementById("casing").value = updateCasingnumber;
+
+
+const casingprice = document.getElementById("casingprice").innerText;
+let numprice = parseFloat(casingprice)
+if(increasingValue == true){
+   var updateprice = numprice + 59;
+}
+else{
+   var updateprice = numprice - 59;
+}
+document.getElementById("casingprice").innerText= updateprice;
+
+
+const price = document .getElementById("price").innerText;
+const numcasing = parseFloat(price);
+const subtotle = document.getElementById("subtotle").innerText;
+var numSubtotle= parseFloat(subtotle);
+var totlePrice = updateprice + numcasing;
+document.getElementById("subtotle").innerText=totlePrice;
+let totle = document.getElementById("totle").innerText;
+let totlenum = parseFloat(totle);
+var numtax = 0;
+var totleamount =  totlePrice + numtax;
+document.getElementById("tax").innerText=numtax;
+document.getElementById("totle").innerText= totleamount;
+}
+
+
+     
+
+     document.getElementById("phone").value=1;
+     document.getElementById("casing").value=1;
+
+      const minus = document.getElementById("minus");
+      minus.addEventListener("click", function(){
+         increase(false);
+      })
+
+
+      const plus = document.getElementById("plus");
+      plus.addEventListener("click", function(){
+         increase(true);
+
+      })
+
+
+      
+
+      const plus2 = document.getElementById("plus2");
+      plus2.addEventListener("click", function(){
+         increasing(true)
+      })
+
+
+      const minus2 = document.getElementById("minus2");
+      minus2.addEventListener("click", function(){
+         increasing(false);
+      })
+      
+   
+
+     
+
+      
+
+   
+   
+
+
+
+
+
+
+
+     
+         
+
+
+   </script>
+</body>
+
+</html>
